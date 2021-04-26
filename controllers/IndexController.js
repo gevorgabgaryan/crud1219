@@ -1,7 +1,9 @@
+const { ArticleModel } = require("../models/ArticleModel");
 
 class IndexController{
-    indexView(req,res){
-        res.render('index');
+    async indexView(req,res){
+        let articles=await ArticleModel.find().sort(`-createdAt`).lean();
+        res.render('index',{articles});
     }
 }
 

@@ -33,8 +33,40 @@
 <div class="container">
 
     <h1 class=" pt-4" >Welcome <%= username %></h1>
-    
+    <p>
+     <a href="/admin/createArticle"> <button class="btn btn-success float-right">Add New Artice</button></a>
+    </p>
+    <table class="w-100" border="1">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Content</th>
+        <th>Image</th>
+        <th>Read</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <% articles.forEach(article=>{ %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.description %></td>
+          <td><%= article.content %></td>
+          <td><%= article.image %></td>
+          <td>
+           <a href="/admin/readArticle/<%= article._id %>"> <button>Read</button></a>
+          </td>
+          <td>
+            <a href="/admin/updateArticle/<%= article._id %>"> <button>Update</button></a>
+          </td>
+          <td>
+            <a href="/admin/deleteArticle/<%= article._id %>"> <button>Delete</button>
+          </td>
+        </tr>
+
+      <% }) %>
+    </table>
 </div>
+
 
 
 
